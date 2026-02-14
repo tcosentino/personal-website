@@ -2,87 +2,118 @@ import { Link } from 'react-router-dom'
 
 export default function Home() {
   return (
-    <div>
-      {/* Hero Section */}
-      <section className="section bg-gradient-to-br from-blue-50 to-indigo-50">
-        <div className="container-custom text-center">
-          <h1 className="text-6xl font-bold text-secondary mb-6">
-            Hey, I'm Troy 👋
-          </h1>
-          <p className="text-2xl text-gray-700 mb-4">
-            Founding Engineer · Agentic Systems · Distributed Systems · AI Integration
-          </p>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            I build systems at scale. Co-founded Contuit (acquired by Ntiva), processing 25K+ ops/min.
-            Currently building <strong>AgentForge</strong> - development platform for autonomous AI agents.
-          </p>
-          <div className="flex gap-4 justify-center">
-            <Link to="/projects" className="btn btn-primary">
-              View Projects
-            </Link>
-            <Link to="/resume" className="btn btn-outline">
-              See Resume
-            </Link>
-            <Link to="/contact" className="btn btn-secondary">
-              Get in Touch
-            </Link>
+    <div className="bg-cream">
+      {/* Hero Section - Neo-Brutalist Style */}
+      <section className="section bg-cream">
+        <div className="container-custom">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Left: Photo */}
+            <div className="flex justify-center md:justify-start">
+              <div className="relative">
+                <div className="absolute -inset-4 bg-primary border-4 border-black transform rotate-3"></div>
+                <div className="relative border-4 border-black shadow-brutal-xl overflow-hidden bg-white w-80 h-80">
+                  <img 
+                    src="/troy-headshot-original.jpg" 
+                    alt="Troy Cosentino" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Text */}
+            <div>
+              <h1 className="text-6xl md:text-7xl font-black text-dark mb-6 leading-none">
+                Hey, I'm <span className="text-primary">Troy</span> 👋
+              </h1>
+              <div className="space-y-4 mb-8">
+                <p className="text-2xl font-bold text-dark">
+                  Founding Engineer · Agentic Systems · AI
+                </p>
+                <p className="text-lg text-dark font-medium">
+                  I build <span className="bg-accent border-2 border-black px-2 py-1 font-black">systems at scale</span>. 
+                  Co-founded Contuit (acquired 2024), processing 25K+ ops/min.
+                </p>
+                <p className="text-lg text-dark font-medium">
+                  Currently building <span className="bg-secondary text-white border-2 border-black px-2 py-1 font-black">AgentForge</span> — 
+                  development platform for autonomous AI agents.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-4">
+                <Link to="/projects" className="btn btn-primary">
+                  View Projects
+                </Link>
+                <Link to="/resume" className="btn btn-outline">
+                  Resume
+                </Link>
+                <Link to="/contact" className="btn btn-secondary">
+                  Contact
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* What I Do */}
-      <section className="section">
+      {/* What I Do - Bold Cards */}
+      <section className="section bg-white">
         <div className="container-custom">
-          <h2 className="heading text-center mb-12">What I Do</h2>
+          <h2 className="section-heading mb-16">What I Do</h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="card text-center">
-              <div className="text-5xl mb-4">🤖</div>
-              <h3 className="subheading">Agentic Systems</h3>
-              <p className="text-gray-600">
+            <div className="card-primary transform rotate-slight">
+              <div className="text-6xl mb-4">🤖</div>
+              <h3 className="text-2xl font-black mb-3">Agentic Systems</h3>
+              <p className="text-white font-medium leading-relaxed">
                 Building autonomous AI agents with framework + infrastructure for real software development.
-                Focus on multi-agent workflows, tool-using LLMs, and production-ready systems.
+                Multi-agent workflows, tool-using LLMs, production systems.
               </p>
             </div>
             
-            <div className="card text-center">
-              <div className="text-5xl mb-4">⚡</div>
-              <h3 className="subheading">Distributed Systems</h3>
-              <p className="text-gray-600">
-                8+ years scaling platforms to handle 25,000+ operations per minute.
+            <div className="card-secondary">
+              <div className="text-6xl mb-4">⚡</div>
+              <h3 className="text-2xl font-black mb-3">Distributed Systems</h3>
+              <p className="text-white font-medium leading-relaxed">
+                8+ years scaling platforms to 25,000+ ops/min.
                 Kubernetes, microservices, API orchestration across 50+ integrations.
               </p>
             </div>
             
-            <div className="card text-center">
-              <div className="text-5xl mb-4">🚀</div>
-              <h3 className="subheading">Founding Engineer</h3>
-              <p className="text-gray-600">
-                Co-founded Contuit, acquired by Ntiva in 2024. Zero-to-acquisition experience building
-                platforms, leading technical architecture, and scaling to 300+ customers globally.
+            <div className="card-accent transform rotate-slight-reverse">
+              <div className="text-6xl mb-4">🚀</div>
+              <h3 className="text-2xl font-black mb-3">Founding Engineer</h3>
+              <p className="text-dark font-medium leading-relaxed">
+                Co-founded Contuit (acquired 2024). Zero-to-acquisition building platforms,
+                leading tech, scaling to 300+ customers globally.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Featured Project */}
-      <section className="section bg-gray-100">
+      {/* Featured Project - AgentForge */}
+      <section className="section bg-cream">
         <div className="container-custom">
-          <h2 className="heading text-center mb-12">Featured Project</h2>
-          <div className="card max-w-4xl mx-auto">
-            <div className="flex items-start gap-6">
-              <div className="text-6xl">🔧</div>
+          <h2 className="section-heading mb-16">Featured Project</h2>
+          <div className="card max-w-5xl mx-auto">
+            <div className="flex items-start gap-8">
+              <div className="text-8xl flex-shrink-0">🔧</div>
               <div className="flex-1">
-                <h3 className="text-3xl font-bold text-secondary mb-3">AgentForge</h3>
-                <p className="text-lg text-gray-700 mb-4">
-                  Development platform for autonomous AI agents. Gives agents both <strong>framework</strong> (standardized
-                  libraries) and <strong>infrastructure</strong> (orchestration, memory, testing, deployment) for building software.
+                <div className="flex items-center gap-4 mb-4">
+                  <h3 className="text-4xl font-black text-dark">AgentForge</h3>
+                  <span className="tag tag-accent">BUILDING NOW</span>
+                </div>
+                <p className="text-xl text-dark font-medium mb-6 leading-relaxed">
+                  Development platform for autonomous AI agents. Gives agents both{' '}
+                  <span className="bg-primary text-white border-2 border-black px-2 py-1 font-black">framework</span>{' '}
+                  (standardized libraries) and{' '}
+                  <span className="bg-secondary text-white border-2 border-black px-2 py-1 font-black">infrastructure</span>{' '}
+                  (orchestration, memory, testing, deployment) for building software.
                 </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="px-3 py-1 bg-primary text-white rounded-full text-sm">TypeScript</span>
-                  <span className="px-3 py-1 bg-primary text-white rounded-full text-sm">React</span>
-                  <span className="px-3 py-1 bg-primary text-white rounded-full text-sm">Agent Orchestration</span>
-                  <span className="px-3 py-1 bg-primary text-white rounded-full text-sm">Open Source</span>
+                <div className="flex flex-wrap gap-3 mb-6">
+                  <span className="tag">TypeScript</span>
+                  <span className="tag">React</span>
+                  <span className="tag">Agent Orchestration</span>
+                  <span className="tag">Open Source</span>
                 </div>
                 <div className="flex gap-4">
                   <Link to="/projects" className="btn btn-primary">
@@ -94,7 +125,7 @@ export default function Home() {
                     rel="noopener noreferrer"
                     className="btn btn-outline"
                   >
-                    View on GitHub →
+                    GitHub →
                   </a>
                 </div>
               </div>
@@ -103,42 +134,43 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Recent Blog Posts (placeholder) */}
-      <section className="section">
+      {/* Stack */}
+      <section className="section bg-black text-white">
         <div className="container-custom">
-          <h2 className="heading text-center mb-12">Recent Writing</h2>
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="card">
-              <h3 className="text-xl font-bold text-secondary mb-2">Blog Coming Soon</h3>
-              <p className="text-gray-600 mb-4">
-                I'll be writing about agentic systems, distributed architecture, and lessons learned building at scale.
-              </p>
-              <Link to="/blog" className="text-primary font-medium hover:underline">
-                Check back soon →
-              </Link>
+          <h2 className="text-5xl font-black mb-12 text-white border-b-8 border-primary pb-2 inline-block">
+            Tech Stack
+          </h2>
+          <div className="grid md:grid-cols-4 gap-6">
+            <div>
+              <h4 className="text-accent font-black text-lg mb-3 uppercase">Languages</h4>
+              <p className="font-medium">TypeScript, JavaScript, Node.js, Python</p>
             </div>
-            
-            <div className="card">
-              <h3 className="text-xl font-bold text-secondary mb-2">What I'll Cover</h3>
-              <ul className="text-gray-600 space-y-2">
-                <li>• Building AgentForge: Architecture & Decisions</li>
-                <li>• Multi-agent workflows in production</li>
-                <li>• Scaling distributed systems</li>
-                <li>• Lessons from founding → acquisition</li>
-              </ul>
+            <div>
+              <h4 className="text-accent font-black text-lg mb-3 uppercase">Frontend</h4>
+              <p className="font-medium">React, Next.js, Tailwind, Vite</p>
+            </div>
+            <div>
+              <h4 className="text-accent font-black text-lg mb-3 uppercase">Backend & Infra</h4>
+              <p className="font-medium">Kubernetes, Docker, AWS, Terraform</p>
+            </div>
+            <div>
+              <h4 className="text-accent font-black text-lg mb-3 uppercase">AI & Agents</h4>
+              <p className="font-medium">LangChain, LLM Orchestration, Multi-agent workflows</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="section bg-secondary text-white">
+      <section className="section bg-primary">
         <div className="container-custom text-center">
-          <h2 className="text-4xl font-bold mb-4">Let's Build Something</h2>
-          <p className="text-xl mb-8 text-gray-300">
+          <h2 className="text-5xl md:text-6xl font-black text-white mb-6">
+            Let's Build Something
+          </h2>
+          <p className="text-2xl font-bold text-white mb-8">
             Interested in agentic systems, distributed architecture, or just want to chat?
           </p>
-          <Link to="/contact" className="btn bg-white text-secondary hover:bg-gray-100">
+          <Link to="/contact" className="btn bg-white text-dark border-4 border-black shadow-brutal-xl hover:shadow-brutal-lg hover:-translate-y-2 font-black">
             Get in Touch
           </Link>
         </div>

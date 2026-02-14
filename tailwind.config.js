@@ -7,13 +7,26 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#3498db',
-        secondary: '#2c3e50',
-        accent: '#27ae60',
+        // Neo-Brutalist Playful palette
+        primary: '#FF6B6B',      // Coral red
+        secondary: '#4ECDC4',    // Turquoise
+        accent: '#FFE66D',       // Yellow
+        dark: '#2D3748',         // Dark gray text
+        cream: '#FFFEF2',        // Warm off-white background
+        black: '#000000',
       },
       fontFamily: {
-        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-        mono: ['SF Mono', 'Monaco', 'Courier New', 'monospace'],
+        display: ['Clash Display', 'Cabinet Grotesk', 'system-ui', 'sans-serif'],
+        sans: ['General Sans', 'Inter', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'SF Mono', 'Monaco', 'monospace'],
+      },
+      boxShadow: {
+        'brutal': '4px 4px 0px 0px #000000',
+        'brutal-lg': '8px 8px 0px 0px #000000',
+        'brutal-xl': '12px 12px 0px 0px #000000',
+        'brutal-primary': '4px 4px 0px 0px #FF6B6B',
+        'brutal-secondary': '4px 4px 0px 0px #4ECDC4',
+        'brutal-accent': '4px 4px 0px 0px #FFE66D',
       },
     },
   },
