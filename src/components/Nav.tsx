@@ -12,26 +12,29 @@ export default function Nav() {
   ]
   
   return (
-    <nav className="bg-cream border-b-4 border-black sticky top-0 z-50 shadow-[0_4px_0_0_#000000]">
-      <div className="container-custom py-6 px-6 flex justify-between items-center">
+    <nav className="bg-white/80 backdrop-blur-lg border-b border-gray-100 sticky top-0 z-50 shadow-sm">
+      <div className="container-custom py-5 px-6 flex justify-between items-center">
         <Link 
           to="/" 
-          className="text-2xl font-black text-dark hover:text-primary transition-colors uppercase tracking-tight"
+          className="text-2xl font-display font-black text-dark hover:text-primary transition-colors"
         >
-          Troy
+          Troy Cosentino
         </Link>
-        <div className="flex gap-2 md:gap-6">
+        <div className="flex gap-8">
           {links.map((link) => (
             <Link
               key={link.path}
               to={link.path}
-              className={`font-bold text-sm md:text-base uppercase tracking-wide px-3 md:px-4 py-2 border-2 border-black transition-all ${
+              className={`font-medium transition-colors relative ${
                 location.pathname === link.path
-                  ? 'bg-primary text-white shadow-[2px_2px_0_0_#000000] transform -translate-y-1'
-                  : 'bg-white text-dark hover:bg-accent hover:shadow-[2px_2px_0_0_#000000] hover:-translate-y-1'
+                  ? 'text-primary'
+                  : 'text-dark/70 hover:text-primary'
               }`}
             >
               {link.label}
+              {location.pathname === link.path && (
+                <span className="absolute -bottom-5 left-0 right-0 h-0.5 bg-primary rounded-full"></span>
+              )}
             </Link>
           ))}
         </div>
