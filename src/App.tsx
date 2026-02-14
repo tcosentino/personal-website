@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
 import Home from './pages/Home'
@@ -9,9 +9,12 @@ import BlogPost from './pages/BlogPost'
 import Contact from './pages/Contact'
 
 function App() {
+  const location = useLocation()
+  const isHomePage = location.pathname === '/'
+
   return (
     <div className="min-h-screen flex flex-col">
-      <Nav />
+      {!isHomePage && <Nav />}
       <main className="flex-grow">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -22,7 +25,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
-      <Footer />
+      {!isHomePage && <Footer />}
     </div>
   )
 }
