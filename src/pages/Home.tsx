@@ -15,49 +15,53 @@ export default function Home() {
     { type: 'system', content: 'Initializing context for Troy Cosentino...', delay: 0 },
     { type: 'system', content: '', delay: 400 },
     
-    { type: 'tool_call', content: 'get_introduction()', delay: 600 },
-    { type: 'tool_result', content: "Hey! I'm Troy, a founding engineer specializing in distributed systems and AI.", delay: 800 },
-    { type: 'tool_result', content: 'Based in San Francisco. Co-founded Contuit (acquired by Ntiva in 2024).', delay: 1000 },
-    { type: 'tool_result', content: '8+ years building production systems at scale.', delay: 1200 },
-    { type: 'system', content: '', delay: 1400 },
+    { type: 'tool_call', content: 'load_profile_image()', delay: 600 },
+    { type: 'tool_result', content: '[IMAGE_PLACEHOLDER]', delay: 800 },
+    { type: 'system', content: '', delay: 1000 },
     
-    { type: 'tool_call', content: 'get_current_role()', delay: 1600 },
-    { type: 'tool_result', content: '→ Ntiva - Senior Software Architect (2024-present)', delay: 1800 },
-    { type: 'tool_result', content: '  Sole technical owner of platform processing 25,000+ operations/min', delay: 2000 },
-    { type: 'tool_result', content: '  Leading AI-powered automation and distributed systems architecture', delay: 2200 },
-    { type: 'system', content: '', delay: 2400 },
+    { type: 'tool_call', content: 'get_introduction()', delay: 1200 },
+    { type: 'tool_result', content: "Hey! I'm Troy, a founding engineer specializing in distributed systems and AI.", delay: 1400 },
+    { type: 'tool_result', content: 'Based in San Francisco. Co-founded Contuit (acquired by Ntiva in 2024).', delay: 1600 },
+    { type: 'tool_result', content: '8+ years building production systems at scale.', delay: 1800 },
+    { type: 'system', content: '', delay: 2000 },
     
-    { type: 'tool_call', content: 'get_founding_experience()', delay: 2600 },
-    { type: 'tool_result', content: '→ Contuit - Co-Founder & Principal Engineer (2017-2024)', delay: 2800 },
-    { type: 'tool_result', content: '  Built workflow automation platform from zero to acquisition', delay: 3000 },
-    { type: 'tool_result', content: '  Scaled to 300+ customers across 3 global regions', delay: 3200 },
-    { type: 'tool_result', content: '  Architected distributed orchestration engine with 50+ API integrations', delay: 3400 },
-    { type: 'system', content: '', delay: 3600 },
+    { type: 'tool_call', content: 'get_current_role()', delay: 2200 },
+    { type: 'tool_result', content: '→ Ntiva - Senior Software Architect (2024-present)', delay: 2400 },
+    { type: 'tool_result', content: '  Sole technical owner of platform processing 25,000+ operations/min', delay: 2600 },
+    { type: 'tool_result', content: '  Leading AI-powered automation and distributed systems architecture', delay: 2800 },
+    { type: 'system', content: '', delay: 3000 },
     
-    { type: 'tool_call', content: 'get_technical_focus()', delay: 3800 },
-    { type: 'tool_result', content: '→ Distributed Systems: Kubernetes, microservices, API orchestration', delay: 4000 },
-    { type: 'tool_result', content: '→ AI Integration: LLM-powered systems, agent architectures', delay: 4200 },
-    { type: 'tool_result', content: '→ Platform Engineering: Infrastructure, observability, reliability', delay: 4400 },
-    { type: 'system', content: '', delay: 4600 },
+    { type: 'tool_call', content: 'get_founding_experience()', delay: 3200 },
+    { type: 'tool_result', content: '→ Contuit - Co-Founder & Principal Engineer (2017-2024)', delay: 3400 },
+    { type: 'tool_result', content: '  Built workflow automation platform from zero to acquisition', delay: 3600 },
+    { type: 'tool_result', content: '  Scaled to 300+ customers across 3 global regions', delay: 3800 },
+    { type: 'tool_result', content: '  Architected distributed orchestration engine with 50+ API integrations', delay: 4000 },
+    { type: 'system', content: '', delay: 4200 },
     
-    { type: 'tool_call', content: 'get_current_projects()', delay: 4800 },
-    { type: 'tool_result', content: '→ AgentForge - Development platform for autonomous AI agents', delay: 5000 },
-    { type: 'tool_result', content: '→ Open source work in agentic systems and tooling', delay: 5200 },
-    { type: 'system', content: '', delay: 5400 },
+    { type: 'tool_call', content: 'get_technical_focus()', delay: 4400 },
+    { type: 'tool_result', content: '→ Distributed Systems: Kubernetes, microservices, API orchestration', delay: 4600 },
+    { type: 'tool_result', content: '→ AI Integration: LLM-powered systems, agent architectures', delay: 4800 },
+    { type: 'tool_result', content: '→ Platform Engineering: Infrastructure, observability, reliability', delay: 5000 },
+    { type: 'system', content: '', delay: 5200 },
     
-    { type: 'tool_call', content: 'get_tech_stack()', delay: 5600 },
-    { type: 'tool_result', content: 'TypeScript, JavaScript, Python, React, Node.js', delay: 5800 },
-    { type: 'tool_result', content: 'Kubernetes, Docker, AWS, Terraform', delay: 6000 },
-    { type: 'tool_result', content: 'LangChain, LLM orchestration, distributed systems', delay: 6200 },
-    { type: 'system', content: '', delay: 6400 },
+    { type: 'tool_call', content: 'get_current_projects()', delay: 5400 },
+    { type: 'tool_result', content: '→ AgentForge - Development platform for autonomous AI agents', delay: 5600 },
+    { type: 'tool_result', content: '→ Open source work in agentic systems and tooling', delay: 5800 },
+    { type: 'system', content: '', delay: 6000 },
     
-    { type: 'tool_call', content: 'get_contact_info()', delay: 6600 },
-    { type: 'tool_result', content: '→ GitHub: github.com/tcosentino', delay: 6800 },
-    { type: 'tool_result', content: '→ LinkedIn: linkedin.com/in/troy-cosentino-b36694275', delay: 7000 },
-    { type: 'tool_result', content: '→ Email: troycosentino@gmail.com', delay: 7200 },
-    { type: 'system', content: '', delay: 7400 },
+    { type: 'tool_call', content: 'get_tech_stack()', delay: 6200 },
+    { type: 'tool_result', content: 'TypeScript, JavaScript, Python, React, Node.js', delay: 6400 },
+    { type: 'tool_result', content: 'Kubernetes, Docker, AWS, Terraform', delay: 6600 },
+    { type: 'tool_result', content: 'LangChain, LLM orchestration, distributed systems', delay: 6800 },
+    { type: 'system', content: '', delay: 7000 },
     
-    { type: 'assistant', content: '✓ Context loaded. Profile ready.', delay: 7600 },
+    { type: 'tool_call', content: 'get_contact_info()', delay: 7200 },
+    { type: 'tool_result', content: '→ GitHub: github.com/tcosentino', delay: 7400 },
+    { type: 'tool_result', content: '→ LinkedIn: linkedin.com/in/troy-cosentino-b36694275', delay: 7600 },
+    { type: 'tool_result', content: '→ Email: troycosentino@gmail.com', delay: 7800 },
+    { type: 'system', content: '', delay: 8000 },
+    
+    { type: 'assistant', content: '✓ Context loaded. Profile ready.', delay: 8200 },
   ]
 
   useEffect(() => {
@@ -132,9 +136,21 @@ export default function Home() {
         {/* Agent Output */}
         <div className="space-y-2">
           {lines.slice(0, visibleLines).map((line, index) => (
-            <div key={index} className={getLineStyle(line.type)}>
-              {getPrefix(line.type)}
-              {formatContent(line.content)}
+            <div key={index}>
+              {line.content === '[IMAGE_PLACEHOLDER]' ? (
+                <div className="pl-4 my-4">
+                  <img 
+                    src="/troy-headshot-original.jpg" 
+                    alt="Troy Cosentino"
+                    className="w-48 h-48 rounded-lg border-2 border-gray-700 shadow-lg object-cover"
+                  />
+                </div>
+              ) : (
+                <div className={getLineStyle(line.type)}>
+                  {getPrefix(line.type)}
+                  {formatContent(line.content)}
+                </div>
+              )}
             </div>
           ))}
           
