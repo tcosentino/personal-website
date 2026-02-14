@@ -12,39 +12,37 @@ export default function Home() {
   const [hasStarted, setHasStarted] = useState(false)
 
   const lines: Line[] = [
-    { type: 'user', content: 'What do you know about Troy Cosentino?', delay: 0 },
-    { type: 'system', content: '', delay: 600 },
-    { type: 'tool_call', content: 'get_intro()', delay: 800 },
-    { type: 'tool_result', content: 'Founding engineer specializing in distributed systems and AI', delay: 1000 },
-    { type: 'tool_result', content: 'Based in San Francisco', delay: 1200 },
-    { type: 'system', content: '', delay: 1400 },
+    { type: 'user', content: 'Tell me about Troy Cosentino', delay: 0 },
+    { type: 'system', content: '', delay: 400 },
+    { type: 'assistant', content: 'Troy is a founding engineer specializing in distributed systems and AI. He\'s based in San Francisco.', delay: 800 },
+    { type: 'system', content: '', delay: 1200 },
     
-    { type: 'tool_call', content: 'get_experience()', delay: 1600 },
-    { type: 'tool_result', content: '→ Ntiva - Senior Software Architect (2024-present)', delay: 1800 },
-    { type: 'tool_result', content: '  Processing 25,000+ operations/min, leading AI automation', delay: 2000 },
-    { type: 'tool_result', content: '→ Contuit - Co-Founder (2017-2024, acquired by Ntiva)', delay: 2200 },
-    { type: 'tool_result', content: '  Zero-to-acquisition, 300+ customers, 50+ integrations', delay: 2400 },
-    { type: 'system', content: '', delay: 2600 },
+    { type: 'assistant', content: 'Currently, he\'s a Senior Software Architect at Ntiva (2024-present), where he\'s processing 25,000+ operations per minute and leading AI automation initiatives.', delay: 1600 },
+    { type: 'system', content: '', delay: 2000 },
     
-    { type: 'tool_call', content: 'get_expertise()', delay: 2800 },
-    { type: 'tool_result', content: 'Distributed Systems • AI Integration • Platform Engineering', delay: 3000 },
-    { type: 'system', content: '', delay: 3200 },
+    { type: 'assistant', content: 'Before that, Troy was Co-Founder of Contuit (2017-2024), which was acquired by Ntiva. He took the company from zero to acquisition, serving 300+ customers with 50+ integrations.', delay: 2400 },
+    { type: 'system', content: '', delay: 2800 },
     
-    { type: 'tool_call', content: 'get_stack()', delay: 3400 },
-    { type: 'tool_result', content: 'TypeScript • Python • Kubernetes • React • LangChain', delay: 3600 },
-    { type: 'system', content: '', delay: 3800 },
+    { type: 'assistant', content: 'His core expertise includes:', delay: 3200 },
+    { type: 'tool_result', content: '• Distributed Systems', delay: 3400 },
+    { type: 'tool_result', content: '• AI Integration', delay: 3600 },
+    { type: 'tool_result', content: '• Platform Engineering', delay: 3800 },
+    { type: 'system', content: '', delay: 4000 },
     
-    { type: 'tool_call', content: 'get_contact()', delay: 4000 },
-    { type: 'tool_result', content: '→ github.com/tcosentino', delay: 4200 },
-    { type: 'tool_result', content: '→ linkedin.com/in/troy-cosentino-b36694275', delay: 4400 },
-    { type: 'tool_result', content: '→ troycosentino@gmail.com', delay: 4600 },
+    { type: 'assistant', content: 'His tech stack includes TypeScript, Python, Kubernetes, React, and LangChain.', delay: 4400 },
     { type: 'system', content: '', delay: 4800 },
     
-    { type: 'assistant', content: 'What are you interested in?', delay: 5000 },
-    { type: 'tool_result', content: '→ /projects - Full project list', delay: 5200 },
-    { type: 'tool_result', content: '→ /resume - Resume & experience', delay: 5400 },
-    { type: 'tool_result', content: '→ /blog - Writing & posts', delay: 5600 },
-    { type: 'tool_result', content: '→ /contact - Get in touch', delay: 5800 },
+    { type: 'assistant', content: 'You can find him at:', delay: 5200 },
+    { type: 'tool_result', content: 'github.com/tcosentino', delay: 5400 },
+    { type: 'tool_result', content: 'linkedin.com/in/troy-cosentino-b36694275', delay: 5600 },
+    { type: 'tool_result', content: 'troycosentino@gmail.com', delay: 5800 },
+    { type: 'system', content: '', delay: 6000 },
+    
+    { type: 'assistant', content: 'Want to learn more?', delay: 6400 },
+    { type: 'tool_result', content: '/projects - Full project list', delay: 6600 },
+    { type: 'tool_result', content: '/resume - Resume & experience', delay: 6800 },
+    { type: 'tool_result', content: '/blog - Writing & posts', delay: 7000 },
+    { type: 'tool_result', content: '/contact - Get in touch', delay: 7200 },
   ]
 
   useEffect(() => {
@@ -64,13 +62,13 @@ export default function Home() {
       case 'system':
         return 'text-gray-400 text-sm'
       case 'user':
-        return 'text-gray-900 text-base font-semibold'
+        return 'text-gray-900 text-lg font-medium mb-2'
       case 'tool_call':
         return 'text-blue-600 text-sm font-semibold'
       case 'tool_result':
-        return 'text-gray-700 text-sm pl-4'
+        return 'text-gray-600 text-sm pl-6'
       case 'assistant':
-        return 'text-purple-600 text-sm font-semibold'
+        return 'text-gray-800 text-base leading-relaxed'
       default:
         return 'text-gray-700 text-sm'
     }
@@ -79,15 +77,15 @@ export default function Home() {
   const getPrefix = (type: string) => {
     switch (type) {
       case 'system':
-        return '# '
+        return ''
       case 'user':
-        return '? '
+        return ''
       case 'tool_call':
-        return '> '
+        return ''
       case 'tool_result':
-        return '  '
+        return ''
       case 'assistant':
-        return '✓ '
+        return ''
       default:
         return ''
     }
