@@ -41,7 +41,11 @@ export default function Home() {
     { type: 'tool_result', content: '→ troycosentino@gmail.com', delay: 4200 },
     { type: 'system', content: '', delay: 4400 },
     
-    { type: 'assistant', content: '✓ Profile ready', delay: 4600 },
+    { type: 'assistant', content: 'What are you interested in?', delay: 4600 },
+    { type: 'tool_result', content: '→ /projects - Full project list', delay: 4800 },
+    { type: 'tool_result', content: '→ /resume - Resume & experience', delay: 5000 },
+    { type: 'tool_result', content: '→ /blog - Writing & posts', delay: 5200 },
+    { type: 'tool_result', content: '→ /contact - Get in touch', delay: 5400 },
   ]
 
   useEffect(() => {
@@ -87,12 +91,25 @@ export default function Home() {
   }
 
   const formatContent = (content: string) => {
-    // Make URLs clickable
-    const urlRegex = /(github\.com\/[^\s]+|linkedin\.com\/[^\s]+|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g
-    const parts = content.split(urlRegex)
+    // Make internal and external links clickable
+    const linkRegex = /(\/[a-z]+|github\.com\/[^\s]+|linkedin\.com\/[^\s]+|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g
+    const parts = content.split(linkRegex)
     
     return parts.map((part, i) => {
-      if (part.match(urlRegex)) {
+      if (part.match(linkRegex)) {
+        // Internal routes
+        if (part.startsWith('/')) {
+          return (
+            <Link 
+              key={i} 
+              to={part}
+              className="text-blue-400 hover:text-blue-300 underline"
+            >
+              {part}
+            </Link>
+          )
+        }
+        // External URLs and email
         const url = part.includes('@') ? `mailto:${part}` : `https://${part}`
         return (
           <a 
@@ -126,52 +143,35 @@ export default function Home() {
       </div>
 
       {/* Main content */}
-      <div className="max-w-4xl mx-auto px-8 py-12">
-        {/* Photo + Name (always visible, not animated) */}
-        <div className="flex items-start gap-8 mb-12">
-          <img 
-            src="/troy-headshot-original.jpg" 
-            alt="Troy Cosentino"
-            className="w-40 h-40 rounded-lg border-2 border-gray-700 shadow-lg object-cover flex-shrink-0"
-          />
-          <div className="pt-2">
-            <h1 className="text-4xl font-bold text-gray-100 mb-2">
+      <div className="max-w-6xl mx-auto px-8 py-12">
+        <div className="grid md:grid-cols-2 gap-12 items-start">
+          {/* Left: Photo + Name */}
+          <div className="flex flex-col items-center md:items-start">
+            <img 
+              src="/troy-headshot-original.jpg" 
+              alt="Troy Cosentino"
+              className="w-64 h-64 md:w-80 md:h-80 rounded-lg border-2 border-gray-700 shadow-lg object-cover"
+            />
+            <h1 className="text-4xl font-bold text-gray-100 mt-6">
               Troy Cosentino
             </h1>
           </div>
-        </div>
 
-        {/* Agent output builds below */}
-        <div className="space-y-1">
-          {lines.slice(0, visibleLines).map((line, index) => (
-            <div key={index} className={getLineStyle(line.type)}>
-              {getPrefix(line.type)}
-              {formatContent(line.content)}
-            </div>
-          ))}
-          
-          {/* Cursor blink */}
-          {visibleLines < lines.length && (
-            <span className="inline-block w-2 h-4 bg-green-400 animate-pulse ml-1"></span>
-          )}
-        </div>
-
-        {/* Nav links (appear after loading) */}
-        {visibleLines >= lines.length && (
-          <div className="mt-12 pt-8 border-t border-gray-800 animate-fade-in">
-            <div className="flex gap-6 font-mono text-sm">
-              <Link to="/projects" className="text-blue-400 hover:text-blue-300">
-                → Full projects list
-              </Link>
-              <Link to="/resume" className="text-blue-400 hover:text-blue-300">
-                → Resume
-              </Link>
-              <Link to="/blog" className="text-blue-400 hover:text-blue-300">
-                → Blog
-              </Link>
-            </div>
+          {/* Right: Agent output */}
+          <div className="space-y-1">
+            {lines.slice(0, visibleLines).map((line, index) => (
+              <div key={index} className={getLineStyle(line.type)}>
+                {getPrefix(line.type)}
+                {formatContent(line.content)}
+              </div>
+            ))}
+            
+            {/* Cursor blink */}
+            {visibleLines < lines.length && (
+              <span className="inline-block w-2 h-4 bg-green-400 animate-pulse ml-1"></span>
+            )}
           </div>
-        )}
+        </div>
       </div>
     </div>
   )
