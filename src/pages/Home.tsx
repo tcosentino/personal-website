@@ -1,175 +1,184 @@
-import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
-interface Line {
-  type: 'system' | 'tool_call' | 'tool_result' | 'assistant'
-  content: string
-  delay: number
+interface Message {
+  type: 'user' | 'assistant' | 'thinking' | 'search';
+  content: string;
+  delay: number;
+  searchQuery?: string;
 }
 
-export default function Home() {
-  const [visibleLines, setVisibleLines] = useState<number>(0)
-  const [hasStarted, setHasStarted] = useState(false)
+const messages: Message[] = [
+  { type: 'user', content: 'What do you know about Troy Cosentino?', delay: 0 },
+  { type: 'thinking', content: 'Searching knowledge base...', delay: 800 },
+  { type: 'search', content: 'professional_background', delay: 500, searchQuery: 'get_professional_info()' },
+  { type: 'assistant', content: 'Troy Cosentino is an engineering leader with 7 years of experience building distributed systems at scale. He\'s currently focused on architecting autonomous agent platforms and exploring the intersection of infrastructure and AI.', delay: 600 },
+  { type: 'search', content: 'recent_experience', delay: 400, searchQuery: 'get_experience("Ntiva")' },
+  { type: 'assistant', content: 'Most recently, he served as VP of Engineering at Ntiva (2023-2024), where he led engineering teams building cloud infrastructure and automation, scaled operations, and drove technical strategy.', delay: 600 },
+  { type: 'search', content: 'founding_experience', delay: 400, searchQuery: 'get_experience("Contuit")' },
+  { type: 'assistant', content: 'Before that, Troy was a Founding Engineer at Contuit (2018-2023), where he built a distributed platform handling 25,000+ operations per minute, architected 300+ third-party integrations, and owned infrastructure, search systems, and core platform services.', delay: 600 },
+  { type: 'search', content: 'technical_expertise', delay: 400, searchQuery: 'get_technical_focus()' },
+  { type: 'assistant', content: 'His deep expertise spans:\n\n• Distributed systems & high-throughput architecture\n• Agentic systems & LLM orchestration\n• Infrastructure & developer tooling\n• Product engineering & technical leadership', delay: 600 },
+  { type: 'search', content: 'current_projects', delay: 400, searchQuery: 'get_projects()' },
+  { type: 'assistant', content: 'He\'s currently building AgentForge, a development platform for autonomous AI agents. It\'s built with TypeScript and focuses on agent orchestration, tool integration, and workflow automation.', delay: 600 },
+  { type: 'search', content: 'tech_stack', delay: 400, searchQuery: 'get_tech_stack()' },
+  { type: 'assistant', content: 'His tech stack includes: TypeScript, Python, React, Node.js, PostgreSQL, Redis, Docker, AWS, and Kubernetes.', delay: 500 },
+  { type: 'search', content: 'contact_info', delay: 400, searchQuery: 'get_contact()' },
+  { type: 'assistant', content: 'You can reach him at:\n\nEmail: troycosentino@gmail.com\nGitHub: github.com/tcosentino\nLinkedIn: linkedin.com/in/troy-cosentino-b36694275', delay: 500 },
+];
 
-  const lines: Line[] = [
-    { type: 'tool_call', content: 'get_intro()', delay: 0 },
-    { type: 'tool_result', content: 'Founding engineer specializing in distributed systems and AI', delay: 200 },
-    { type: 'tool_result', content: 'Based in San Francisco', delay: 400 },
-    { type: 'system', content: '', delay: 600 },
-    
-    { type: 'tool_call', content: 'get_experience()', delay: 800 },
-    { type: 'tool_result', content: '→ Ntiva - Senior Software Architect (2024-present)', delay: 1000 },
-    { type: 'tool_result', content: '  Processing 25,000+ operations/min, leading AI automation', delay: 1200 },
-    { type: 'tool_result', content: '→ Contuit - Co-Founder (2017-2024, acquired by Ntiva)', delay: 1400 },
-    { type: 'tool_result', content: '  Zero-to-acquisition, 300+ customers, 50+ integrations', delay: 1600 },
-    { type: 'system', content: '', delay: 1800 },
-    
-    { type: 'tool_call', content: 'get_expertise()', delay: 2000 },
-    { type: 'tool_result', content: 'Distributed Systems • AI Integration • Platform Engineering', delay: 2200 },
-    { type: 'system', content: '', delay: 2400 },
-    
-    { type: 'tool_call', content: 'get_stack()', delay: 2600 },
-    { type: 'tool_result', content: 'TypeScript • Python • Kubernetes • React • LangChain', delay: 2800 },
-    { type: 'system', content: '', delay: 3000 },
-    
-    { type: 'tool_call', content: 'get_contact()', delay: 3200 },
-    { type: 'tool_result', content: '→ github.com/tcosentino', delay: 3400 },
-    { type: 'tool_result', content: '→ linkedin.com/in/troy-cosentino-b36694275', delay: 3600 },
-    { type: 'tool_result', content: '→ troycosentino@gmail.com', delay: 3800 },
-    { type: 'system', content: '', delay: 4000 },
-    
-    { type: 'assistant', content: 'What are you interested in?', delay: 4200 },
-    { type: 'tool_result', content: '→ /projects - Full project list', delay: 4400 },
-    { type: 'tool_result', content: '→ /resume - Resume & experience', delay: 4600 },
-    { type: 'tool_result', content: '→ /blog - Writing & posts', delay: 4800 },
-    { type: 'tool_result', content: '→ /contact - Get in touch', delay: 5000 },
-  ]
+export default function Home() {
+  const [visibleMessages, setVisibleMessages] = useState<Message[]>([]);
+  const [showNav, setShowNav] = useState(false);
 
   useEffect(() => {
-    if (!hasStarted) {
-      setHasStarted(true)
-      
-      lines.forEach((_, index) => {
-        setTimeout(() => {
-          setVisibleLines(index + 1)
-        }, lines[index].delay)
-      })
-    }
-  }, [hasStarted])
+    let currentIndex = 0;
+    let timeoutId: number;
 
-  const getLineStyle = (type: string) => {
-    switch (type) {
-      case 'system':
-        return 'text-gray-600 font-mono text-sm'
-      case 'tool_call':
-        return 'text-blue-400 font-mono text-sm font-medium'
-      case 'tool_result':
-        return 'text-gray-300 font-mono text-sm pl-4'
-      case 'assistant':
-        return 'text-green-400 font-mono text-sm font-medium'
-      default:
-        return 'text-gray-300 font-mono text-sm'
-    }
-  }
-
-  const getPrefix = (type: string) => {
-    switch (type) {
-      case 'system':
-        return '# '
-      case 'tool_call':
-        return '> '
-      case 'tool_result':
-        return '  '
-      case 'assistant':
-        return '✓ '
-      default:
-        return ''
-    }
-  }
-
-  const formatContent = (content: string) => {
-    // Make internal and external links clickable
-    const linkRegex = /(\/[a-z]+|github\.com\/[^\s]+|linkedin\.com\/[^\s]+|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g
-    const parts = content.split(linkRegex)
-    
-    return parts.map((part, i) => {
-      if (part.match(linkRegex)) {
-        // Internal routes
-        if (part.startsWith('/')) {
-          return (
-            <Link 
-              key={i} 
-              to={part}
-              className="text-blue-400 hover:text-blue-300 underline"
-            >
-              {part}
-            </Link>
-          )
-        }
-        // External URLs and email
-        const url = part.includes('@') ? `mailto:${part}` : `https://${part}`
-        return (
-          <a 
-            key={i} 
-            href={url} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-blue-400 hover:text-blue-300 underline"
-          >
-            {part}
-          </a>
-        )
+    const showNextMessage = () => {
+      if (currentIndex < messages.length) {
+        setVisibleMessages(prev => [...prev, messages[currentIndex]]);
+        currentIndex++;
+        timeoutId = window.setTimeout(showNextMessage, messages[currentIndex - 1]?.delay || 500);
+      } else {
+        setShowNav(true);
       }
-      return <span key={i}>{part}</span>
-    })
-  }
+    };
+
+    timeoutId = window.setTimeout(showNextMessage, 500);
+    return () => clearTimeout(timeoutId);
+  }, []);
 
   return (
-    <div className="min-h-screen bg-[#0d1117] text-gray-100">
-      {/* Minimal header */}
-      <div className="max-w-4xl mx-auto px-8 pt-8 pb-4">
-        <div className="flex justify-between items-center text-sm font-mono text-gray-500">
-          <Link to="/" className="hover:text-blue-400 transition-colors">~/troy</Link>
-          <div className="flex gap-6">
-            <Link to="/projects" className="hover:text-blue-400 transition-colors">projects</Link>
-            <Link to="/resume" className="hover:text-blue-400 transition-colors">resume</Link>
-            <Link to="/blog" className="hover:text-blue-400 transition-colors">blog</Link>
-            <Link to="/contact" className="hover:text-blue-400 transition-colors">contact</Link>
+    <div className="min-h-screen bg-gray-50">
+      <div className="max-w-4xl mx-auto px-6 py-8">
+        {/* Header */}
+        <div className="mb-8 pb-6 border-b border-gray-200">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-lg">
+              AI
+            </div>
+            <div>
+              <h1 className="text-xl font-semibold text-gray-900">Agent</h1>
+              <p className="text-sm text-gray-500">Powered by autonomous systems</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Main content */}
-      <div className="max-w-6xl mx-auto px-8 py-12">
-        <div className="flex flex-col md:flex-row gap-12 items-start">
-          {/* Left: Photo + Name (auto-width) */}
-          <div className="flex flex-col items-center md:items-start flex-shrink-0">
-            <img 
-              src="/troy-headshot-original.jpg" 
-              alt="Troy Cosentino"
-              className="w-64 h-64 md:w-80 md:h-80 rounded-lg border-2 border-gray-700 shadow-lg object-cover"
-            />
-            <h1 className="text-4xl font-bold text-gray-100 mt-6">
-              Troy Cosentino
-            </h1>
-          </div>
+        {/* Chat Messages */}
+        <div className="space-y-6 mb-8">
+          {visibleMessages.map((msg, idx) => (
+            <div key={idx} className="animate-fadeIn">
+              {msg.type === 'user' && (
+                <div className="flex justify-end">
+                  <div className="max-w-2xl bg-blue-600 text-white rounded-2xl rounded-tr-sm px-5 py-3">
+                    <p className="text-[15px] leading-relaxed">{msg.content}</p>
+                  </div>
+                </div>
+              )}
 
-          {/* Right: Agent output (fills remaining width) */}
-          <div className="space-y-1 flex-1">
-            {lines.slice(0, visibleLines).map((line, index) => (
-              <div key={index} className={getLineStyle(line.type)}>
-                {getPrefix(line.type)}
-                {formatContent(line.content)}
-              </div>
-            ))}
-            
-            {/* Cursor blink */}
-            {visibleLines < lines.length && (
-              <span className="inline-block w-2 h-4 bg-green-400 animate-pulse ml-1"></span>
-            )}
-          </div>
+              {msg.type === 'thinking' && (
+                <div className="flex gap-3">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                    <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="inline-flex items-center gap-2 text-gray-500 text-sm">
+                      <div className="flex gap-1">
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                      </div>
+                      <span className="italic">{msg.content}</span>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {msg.type === 'search' && (
+                <div className="flex gap-3">
+                  <div className="flex-shrink-0 w-8 h-8" />
+                  <div className="flex-1">
+                    <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 border border-gray-200 rounded-lg text-xs text-gray-600">
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                      </svg>
+                      <span className="font-mono">{msg.searchQuery}</span>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {msg.type === 'assistant' && (
+                <div className="flex gap-3">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm">
+                    AI
+                  </div>
+                  <div className="flex-1 max-w-2xl">
+                    <div className="bg-white border border-gray-200 rounded-2xl rounded-tl-sm px-5 py-3 shadow-sm">
+                      <div className="prose prose-sm max-w-none">
+                        {msg.content.split('\n').map((line, i) => (
+                          <p key={i} className="text-gray-800 text-[15px] leading-relaxed mb-2 last:mb-0">
+                            {line}
+                          </p>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
         </div>
+
+        {/* Navigation Links */}
+        {showNav && (
+          <div className="mt-12 pt-8 border-t border-gray-200 animate-fadeIn">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <Link
+                to="/projects"
+                className="px-4 py-3 bg-white border border-gray-200 rounded-xl text-center text-sm font-medium text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-all"
+              >
+                View Projects
+              </Link>
+              <Link
+                to="/resume"
+                className="px-4 py-3 bg-white border border-gray-200 rounded-xl text-center text-sm font-medium text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-all"
+              >
+                Resume
+              </Link>
+              <Link
+                to="/blog"
+                className="px-4 py-3 bg-white border border-gray-200 rounded-xl text-center text-sm font-medium text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-all"
+              >
+                Blog
+              </Link>
+              <Link
+                to="/contact"
+                className="px-4 py-3 bg-white border border-gray-200 rounded-xl text-center text-sm font-medium text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-all"
+              >
+                Contact
+              </Link>
+              <a
+                href="https://github.com/tcosentino"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-3 bg-white border border-gray-200 rounded-xl text-center text-sm font-medium text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-all"
+              >
+                GitHub
+              </a>
+              <a
+                href="https://linkedin.com/in/troy-cosentino-b36694275"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-3 bg-white border border-gray-200 rounded-xl text-center text-sm font-medium text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-all"
+              >
+                LinkedIn
+              </a>
+            </div>
+          </div>
+        )}
       </div>
     </div>
-  )
+  );
 }
