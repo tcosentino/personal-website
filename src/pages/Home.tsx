@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 interface Line {
-  type: 'system' | 'tool_call' | 'tool_result' | 'assistant'
+  type: 'system' | 'tool_call' | 'tool_result' | 'assistant' | 'user'
   content: string
   delay: number
 }
@@ -12,37 +12,39 @@ export default function Home() {
   const [hasStarted, setHasStarted] = useState(false)
 
   const lines: Line[] = [
-    { type: 'tool_call', content: 'get_intro()', delay: 0 },
-    { type: 'tool_result', content: 'Founding engineer specializing in distributed systems and AI', delay: 200 },
-    { type: 'tool_result', content: 'Based in San Francisco', delay: 400 },
+    { type: 'user', content: 'What do you know about Troy Cosentino?', delay: 0 },
     { type: 'system', content: '', delay: 600 },
+    { type: 'tool_call', content: 'get_intro()', delay: 800 },
+    { type: 'tool_result', content: 'Founding engineer specializing in distributed systems and AI', delay: 1000 },
+    { type: 'tool_result', content: 'Based in San Francisco', delay: 1200 },
+    { type: 'system', content: '', delay: 1400 },
     
-    { type: 'tool_call', content: 'get_experience()', delay: 800 },
-    { type: 'tool_result', content: '→ Ntiva - Senior Software Architect (2024-present)', delay: 1000 },
-    { type: 'tool_result', content: '  Processing 25,000+ operations/min, leading AI automation', delay: 1200 },
-    { type: 'tool_result', content: '→ Contuit - Co-Founder (2017-2024, acquired by Ntiva)', delay: 1400 },
-    { type: 'tool_result', content: '  Zero-to-acquisition, 300+ customers, 50+ integrations', delay: 1600 },
-    { type: 'system', content: '', delay: 1800 },
+    { type: 'tool_call', content: 'get_experience()', delay: 1600 },
+    { type: 'tool_result', content: '→ Ntiva - Senior Software Architect (2024-present)', delay: 1800 },
+    { type: 'tool_result', content: '  Processing 25,000+ operations/min, leading AI automation', delay: 2000 },
+    { type: 'tool_result', content: '→ Contuit - Co-Founder (2017-2024, acquired by Ntiva)', delay: 2200 },
+    { type: 'tool_result', content: '  Zero-to-acquisition, 300+ customers, 50+ integrations', delay: 2400 },
+    { type: 'system', content: '', delay: 2600 },
     
-    { type: 'tool_call', content: 'get_expertise()', delay: 2000 },
-    { type: 'tool_result', content: 'Distributed Systems • AI Integration • Platform Engineering', delay: 2200 },
-    { type: 'system', content: '', delay: 2400 },
+    { type: 'tool_call', content: 'get_expertise()', delay: 2800 },
+    { type: 'tool_result', content: 'Distributed Systems • AI Integration • Platform Engineering', delay: 3000 },
+    { type: 'system', content: '', delay: 3200 },
     
-    { type: 'tool_call', content: 'get_stack()', delay: 2600 },
-    { type: 'tool_result', content: 'TypeScript • Python • Kubernetes • React • LangChain', delay: 2800 },
-    { type: 'system', content: '', delay: 3000 },
+    { type: 'tool_call', content: 'get_stack()', delay: 3400 },
+    { type: 'tool_result', content: 'TypeScript • Python • Kubernetes • React • LangChain', delay: 3600 },
+    { type: 'system', content: '', delay: 3800 },
     
-    { type: 'tool_call', content: 'get_contact()', delay: 3200 },
-    { type: 'tool_result', content: '→ github.com/tcosentino', delay: 3400 },
-    { type: 'tool_result', content: '→ linkedin.com/in/troy-cosentino-b36694275', delay: 3600 },
-    { type: 'tool_result', content: '→ troycosentino@gmail.com', delay: 3800 },
-    { type: 'system', content: '', delay: 4000 },
+    { type: 'tool_call', content: 'get_contact()', delay: 4000 },
+    { type: 'tool_result', content: '→ github.com/tcosentino', delay: 4200 },
+    { type: 'tool_result', content: '→ linkedin.com/in/troy-cosentino-b36694275', delay: 4400 },
+    { type: 'tool_result', content: '→ troycosentino@gmail.com', delay: 4600 },
+    { type: 'system', content: '', delay: 4800 },
     
-    { type: 'assistant', content: 'What are you interested in?', delay: 4200 },
-    { type: 'tool_result', content: '→ /projects - Full project list', delay: 4400 },
-    { type: 'tool_result', content: '→ /resume - Resume & experience', delay: 4600 },
-    { type: 'tool_result', content: '→ /blog - Writing & posts', delay: 4800 },
-    { type: 'tool_result', content: '→ /contact - Get in touch', delay: 5000 },
+    { type: 'assistant', content: 'What are you interested in?', delay: 5000 },
+    { type: 'tool_result', content: '→ /projects - Full project list', delay: 5200 },
+    { type: 'tool_result', content: '→ /resume - Resume & experience', delay: 5400 },
+    { type: 'tool_result', content: '→ /blog - Writing & posts', delay: 5600 },
+    { type: 'tool_result', content: '→ /contact - Get in touch', delay: 5800 },
   ]
 
   useEffect(() => {
@@ -61,6 +63,8 @@ export default function Home() {
     switch (type) {
       case 'system':
         return 'text-gray-400 text-sm'
+      case 'user':
+        return 'text-gray-900 text-base font-semibold'
       case 'tool_call':
         return 'text-blue-600 text-sm font-semibold'
       case 'tool_result':
@@ -76,6 +80,8 @@ export default function Home() {
     switch (type) {
       case 'system':
         return '# '
+      case 'user':
+        return '? '
       case 'tool_call':
         return '> '
       case 'tool_result':
