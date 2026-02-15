@@ -62,13 +62,13 @@ export default function Home() {
       case 'system':
         return 'text-gray-400 text-sm'
       case 'user':
-        return 'text-gray-900 text-lg font-medium mb-2'
+        return 'text-gray-900 text-base font-normal bg-gray-100 border border-gray-200 rounded-2xl rounded-tl-sm px-5 py-3'
       case 'tool_call':
         return 'text-blue-600 text-sm font-semibold'
       case 'tool_result':
-        return 'text-gray-600 text-sm pl-6'
+        return 'text-gray-600 text-sm pl-11'
       case 'assistant':
-        return 'text-gray-800 text-base leading-relaxed'
+        return 'text-gray-800 text-base leading-relaxed pt-1'
       default:
         return 'text-gray-700 text-sm'
     }
@@ -159,11 +159,41 @@ export default function Home() {
           </div>
 
           {/* Right: Agent output (fills remaining width) */}
-          <div className="space-y-1 flex-1">
+          <div className="space-y-3 flex-1">
             {lines.slice(0, visibleLines).map((line, index) => (
-              <div key={index} className={getLineStyle(line.type)}>
-                {getPrefix(line.type)}
-                {formatContent(line.content)}
+              <div key={index}>
+                {line.type === 'user' && (
+                  <div className="flex items-start gap-3 mb-6">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center text-white text-xs font-semibold">
+                      You
+                    </div>
+                    <div className={getLineStyle(line.type)}>
+                      {formatContent(line.content)}
+                    </div>
+                  </div>
+                )}
+                {line.type === 'assistant' && (
+                  <div className="flex items-start gap-3 mb-3">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-xs font-semibold">
+                      AI
+                    </div>
+                    <div className={getLineStyle(line.type)}>
+                      {formatContent(line.content)}
+                    </div>
+                  </div>
+                )}
+                {line.type === 'tool_result' && (
+                  <div className={getLineStyle(line.type)}>
+                    {getPrefix(line.type)}
+                    {formatContent(line.content)}
+                  </div>
+                )}
+                {line.type === 'system' && (
+                  <div className={getLineStyle(line.type)}>
+                    {getPrefix(line.type)}
+                    {formatContent(line.content)}
+                  </div>
+                )}
               </div>
             ))}
             
