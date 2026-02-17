@@ -129,7 +129,7 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="min-h-screen bg-pattern">
       {/* Minimal header */}
       <div className="max-w-4xl mx-auto px-8 pt-8 pb-4">
         <div className="flex justify-between items-center text-sm text-gray-500">

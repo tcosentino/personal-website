@@ -145,10 +145,9 @@
   }
 
   .bg-pattern {
-    background-image: 
-      linear-gradient(to right, rgba(224, 122, 95, 0.03) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(224, 122, 95, 0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
+    background-color: #fafaf9;
+    background-image: radial-gradient(circle, #c8c8c8 1px, transparent 1px);
+    background-size: 22px 22px;
   }
 
   .animate-fade-in {
