@@ -148,6 +148,7 @@
     background-color: #fafaf9;
     background-image: radial-gradient(circle, #c8c8c8 1px, transparent 1px);
     background-size: 22px 22px;
+    background-attachment: fixed;
   }
 
   .animate-fade-in {
