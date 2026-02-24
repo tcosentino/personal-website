@@ -15,7 +15,7 @@ export default function Projects() {
       <MinimalNav />
 
       <div className="max-w-4xl mx-auto px-8 py-12 flex-1 w-full">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">projects</h1>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">Projects</h1>
         <p className="text-gray-500 mb-10">Things I've built and am building.</p>
 
         <div className="grid md:grid-cols-2 gap-6">

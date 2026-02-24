@@ -35,6 +35,11 @@ export default function Home() {
       content: 'Lately, he has been experimenting with [AgentForge](/projects/agentforge) as a way to give vibe coders some structure. Other projects include [Bebo](/projects/bebo), an AI assistant for managing a low FODMAP diet, and [Roteiro](/projects/roteiro), an AI-powered trip planner.',
       delay: 3000,
     },
+    {
+      type: 'assistant',
+      content: 'If you\'re in San Francisco, he\'d love to grab a beer! Otherwise, he\'s always happy to connect online. You can reach him at [troycosentino@gmail.com](mailto:troycosentino@gmail.com).',
+      delay: 4200,
+    },
   ]
 
   useEffect(() => {

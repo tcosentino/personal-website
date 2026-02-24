@@ -8,7 +8,7 @@ export default function Contact() {
       <MinimalNav />
 
       <div className="max-w-4xl mx-auto px-8 py-12 flex-1 w-full">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">get in touch</h1>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">Get in Touch</h1>
         <p className="text-gray-500 mb-10">
           Interested in agentic systems, distributed architecture, or just want to chat?
         </p>

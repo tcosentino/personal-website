@@ -10,7 +10,7 @@ export default function Resume() {
       <div className="max-w-4xl mx-auto px-8 py-12 flex-1 w-full">
         <div className="flex items-center justify-between mb-10">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">resume</h1>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">Resume</h1>
             <p className="text-gray-500">8+ years building distributed systems at scale</p>
           </div>
           <a
