@@ -96,7 +96,7 @@ export default function Resume() {
           <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-6">Technical Skills</h2>
           <div className="grid md:grid-cols-2 gap-6">
             {[
-              { label: 'Languages & Frameworks', value: 'TypeScript, JavaScript, Node.js, Python, React, Next.js' },
+              { label: 'Languages & Frameworks', value: 'TypeScript, JavaScript, Node.js, React, Next.js' },
               { label: 'Infrastructure', value: 'Kubernetes, Docker, Terraform, Azure, AWS' },
               { label: 'Databases', value: 'MongoDB, SQL, Redis' },
               { label: 'Observability', value: 'Grafana, Loki, Prometheus, Custom Monitoring' },

@@ -20,7 +20,7 @@ const messages: Message[] = [
   { type: 'tool_call', content: 'get_projects()', delay: 300, toolName: 'get_projects' },
   { type: 'tool_result', content: 'AgentForge: Development platform for autonomous AI agents. Built with TypeScript, focusing on agent orchestration, tool integration, and workflow automation.', delay: 500 },
   { type: 'tool_call', content: 'get_tech_stack()', delay: 300, toolName: 'get_tech_stack' },
-  { type: 'tool_result', content: 'TypeScript, Python, React, Node.js, PostgreSQL, Redis, Docker, AWS, Kubernetes', delay: 500 },
+  { type: 'tool_result', content: 'TypeScript, React, Node.js, PostgreSQL, Redis, Docker, AWS, Kubernetes', delay: 500 },
   { type: 'tool_call', content: 'get_contact()', delay: 300, toolName: 'get_contact' },
   { type: 'tool_result', content: 'Email: troycosentino@gmail.com\nGitHub: github.com/tcosentino\nLinkedIn: linkedin.com/in/troy-cosentino-b36694275', delay: 500 },
   { type: 'assistant', content: 'Profile complete.', delay: 300 },
