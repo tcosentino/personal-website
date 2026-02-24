@@ -66,7 +66,7 @@ export default function Contact() {
 
             <div className="space-y-4">
               <div>
-                <h3 className="text-sm font-semibold text-gray-700 mb-1">Agentic Systems Roles</h3>
+                <h3 className="text-sm font-semibold text-gray-700 mb-1">Agentic Systems</h3>
                 <p className="text-sm text-gray-500">Building autonomous AI agents, multi-agent workflows, tool-using LLMs, agent orchestration platforms.</p>
               </div>
 
@@ -75,14 +75,9 @@ export default function Contact() {
                 <p className="text-sm text-gray-500">Distributed systems at scale, API orchestration, Kubernetes, infrastructure tooling.</p>
               </div>
 
-              <div>
-                <h3 className="text-sm font-semibold text-gray-700 mb-1">Founding Engineer</h3>
-                <p className="text-sm text-gray-500">Early-stage companies where I can own technical architecture and help shape product direction.</p>
-              </div>
-
               <div className="pt-4 border-t border-gray-100">
                 <p className="text-sm text-gray-400">
-                  Open to full-time roles, consulting, or interesting projects. I respond to everything.
+                  Always interested in conversations about distributed systems and agentic AI.
                 </p>
               </div>
             </div>
