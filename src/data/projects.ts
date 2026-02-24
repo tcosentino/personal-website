@@ -33,9 +33,9 @@ export const projects: Project[] = [
     title: 'AgentForge',
     status: 'Active Development',
     shortDescription: 'A development platform that gives AI agent builders structure and guardrails.',
-    description: 'AgentForge is a TypeScript monorepo providing a structured development platform for building autonomous AI agents. It gives vibe coders a framework with guardrails -- agent orchestration, human-in-the-loop workflows, and a development cycle that keeps projects on track.',
+    description: 'AgentForge is a structured development platform for building real applications. It gives vibe coders a framework with guardrails - agent orchestration, human-in-the-loop workflows, and a development cycle that keeps projects on track. Use a suite of agents to build, manage, deploy and maintain your project from start to finish.',
     highlights: [
-      'TypeScript monorepo with modular agent architecture',
+      'Suite of agents for full project lifecycle',
       'Human-in-the-loop workflow support',
       'Agent orchestration and lifecycle management',
       'Built for developers who want structure without sacrificing speed',
