@@ -115,8 +115,7 @@ export default function Resume() {
         <section className="mb-12">
           <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-6">Education</h2>
           <div>
-            <h3 className="text-lg font-bold text-gray-900">Bachelor of Science, Computer Engineering</h3>
-            <p className="text-gray-600">Gonzaga University</p>
+            <h3 className="text-lg font-bold text-gray-900">Computer Engineering, Gonzaga University</h3>
           </div>
         </section>
 
