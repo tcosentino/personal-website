@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom'
+import MinimalNav from '../components/MinimalNav'
+import MinimalFooter from '../components/MinimalFooter'
 
 export default function Blog() {
   const posts = [
@@ -29,44 +31,44 @@ export default function Blog() {
   ]
 
   return (
-    <div className="section">
-      <div className="container-custom max-w-4xl">
-        <h1 className="heading text-center mb-4">Blog</h1>
-        <p className="text-xl text-gray-600 text-center mb-12">
+    <div className="min-h-screen bg-pattern flex flex-col">
+      <MinimalNav />
+
+      <div className="max-w-4xl mx-auto px-8 py-12 flex-1 w-full">
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">blog</h1>
+        <p className="text-gray-500 mb-10">
           Writing about agentic systems, distributed architecture, and building at scale
         </p>
 
-        <div className="space-y-8">
+        <div className="space-y-6">
           {posts.map((post) => (
-            <div key={post.slug} className="card">
+            <div key={post.slug} className="bg-white rounded-2xl p-6 shadow-sm">
               <div className="flex justify-between items-start mb-3">
-                <h2 className="text-2xl font-bold text-secondary">
+                <h2 className="text-lg font-bold text-gray-900 flex-1 mr-4">
                   {post.published ? (
-                    <Link to={`/blog/${post.slug}`} className="hover:text-primary transition-colors">
+                    <Link to={`/blog/${post.slug}`} className="hover:text-blue-600 transition-colors">
                       {post.title}
                     </Link>
                   ) : (
-                    <span className="text-gray-500">{post.title}</span>
+                    <span className="text-gray-400">{post.title}</span>
                   )}
                 </h2>
-                <span className={`px-4 py-1 rounded-full text-sm font-medium ${
-                  post.published 
-                    ? 'bg-green-100 text-green-700' 
-                    : 'bg-yellow-100 text-yellow-700'
+                <span className={`text-xs font-medium px-2.5 py-1 rounded-full flex-shrink-0 ${
+                  post.published
+                    ? 'bg-green-100 text-green-700'
+                    : 'bg-amber-100 text-amber-700'
                 }`}>
                   {post.published ? 'Published' : 'Coming Soon'}
                 </span>
               </div>
 
-              <p className="text-gray-600 text-sm mb-3">{post.date}</p>
+              <p className="text-gray-600 text-sm mb-4">{post.excerpt}</p>
 
-              <p className="text-gray-700 mb-4">{post.excerpt}</p>
-
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5">
                 {post.tags.map((tag) => (
-                  <span 
+                  <span
                     key={tag}
-                    className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm"
+                    className="text-xs px-2 py-1 bg-gray-100 text-gray-500 rounded-full"
                   >
                     {tag}
                   </span>
@@ -75,14 +77,9 @@ export default function Blog() {
             </div>
           ))}
         </div>
-
-        <div className="card mt-12 text-center bg-gradient-to-br from-blue-50 to-indigo-50">
-          <h3 className="text-2xl font-bold text-secondary mb-3">Stay Updated</h3>
-          <p className="text-gray-600 mb-6">
-            I will be writing about building AgentForge and agentic systems. Follow me on GitHub or LinkedIn.
-          </p>
-        </div>
       </div>
+
+      <MinimalFooter />
     </div>
   )
 }

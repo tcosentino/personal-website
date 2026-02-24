@@ -1,9 +1,10 @@
 import { useParams, Link } from 'react-router-dom'
+import MinimalNav from '../components/MinimalNav'
+import MinimalFooter from '../components/MinimalFooter'
 
 export default function BlogPost() {
   const { slug } = useParams()
 
-  // Placeholder - you'll load real content from files/CMS later
   const post = {
     title: 'Blog Post Title',
     date: 'January 1, 2026',
@@ -12,36 +13,32 @@ export default function BlogPost() {
   }
 
   return (
-    <div className="section">
-      <div className="container-custom max-w-3xl">
-        <Link to="/blog" className="text-primary hover:underline mb-6 inline-block">
-          ← Back to Blog
+    <div className="min-h-screen bg-pattern flex flex-col">
+      <MinimalNav />
+
+      <div className="max-w-3xl mx-auto px-8 py-12 flex-1 w-full">
+        <Link
+          to="/blog"
+          className="text-sm text-gray-400 hover:text-gray-600 transition-colors mb-8 inline-block"
+        >
+          &larr; blog
         </Link>
 
-        <article className="prose prose-lg max-w-none">
-          <h1 className="text-5xl font-bold text-secondary mb-4">{post.title}</h1>
-          <p className="text-gray-600 mb-8">{post.date}</p>
+        <article>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">{post.title}</h1>
+          <p className="text-sm text-gray-400 mb-8">{post.date}</p>
 
-          <div className="card">
-            <div className="text-gray-700 leading-relaxed">
+          <div className="bg-white rounded-2xl p-6 shadow-sm">
+            <div className="text-gray-700 leading-relaxed text-sm">
               <p>Post slug: {slug}</p>
               <p className="mt-4">{post.content}</p>
-              <p className="mt-4">
-                You'll replace this with actual blog post content. Options:
-              </p>
-              <ul className="mt-2 ml-6">
-                <li>Write posts in Markdown files</li>
-                <li>Use a headless CMS (Contentful, Sanity)</li>
-                <li>Store posts in JSON/database</li>
-                <li>Use MDX for interactive posts</li>
-              </ul>
             </div>
 
-            <div className="flex flex-wrap gap-2 mt-6 pt-6 border-t">
+            <div className="flex flex-wrap gap-1.5 mt-6 pt-6 border-t border-gray-100">
               {post.tags.map((tag) => (
-                <span 
+                <span
                   key={tag}
-                  className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm"
+                  className="text-xs px-2 py-1 bg-gray-100 text-gray-500 rounded-full"
                 >
                   {tag}
                 </span>
@@ -49,13 +46,9 @@ export default function BlogPost() {
             </div>
           </div>
         </article>
-
-        <div className="mt-12 text-center">
-          <Link to="/blog" className="btn btn-outline">
-            ← Back to All Posts
-          </Link>
-        </div>
       </div>
+
+      <MinimalFooter />
     </div>
   )
 }
