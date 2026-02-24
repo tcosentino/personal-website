@@ -136,7 +136,7 @@ export default function Home() {
     <div className="min-h-screen bg-pattern flex flex-col">
       <MinimalNav />
 
-      <div className="w-full max-w-6xl mx-auto px-8 py-12 flex-1">
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-8 py-12 flex-1">
         <div className="flex flex-col md:grid md:grid-cols-[320px_1fr] gap-12 items-start">
           {/* Left: Photo + Name */}
           <div className="flex flex-col items-center md:items-start">
@@ -154,7 +154,7 @@ export default function Home() {
           </div>
 
           {/* Right: Chat bubbles */}
-          <div className="space-y-1.5 flex-1 min-w-0 md:min-h-[300px]">
+          <div className="space-y-1.5 w-full min-w-0 md:min-h-[300px]">
             {messages.slice(0, visibleCount).map((msg, index) => (
               <ChatMessage key={index} type={msg.type}>
                 {formatContent(msg.content, msg.type === 'user')}
