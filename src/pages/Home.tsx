@@ -149,7 +149,7 @@ export default function Home() {
               Troy Cosentino
             </h1>
             <p className="text-sm text-gray-400 mt-1">
-              Senior Software Architect | Distributed Systems, AI Integration | Ex-Founder (acquired)
+              Senior Software Engineer | Full-Stack, Data Integration, AI | Ex-Founder (acquired)
             </p>
           </div>
 

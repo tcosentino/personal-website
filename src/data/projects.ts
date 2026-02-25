@@ -57,7 +57,7 @@ export const projects: Project[] = [
       'Symptom and food diary tracking',
       'Recipe suggestions based on dietary restrictions',
     ],
-    tech: ['TypeScript', 'React', 'AI/LLM Integration'],
+    tech: ['TypeScript', 'React', 'Custom Agents'],
     links: [],
   },
   {
@@ -72,7 +72,7 @@ export const projects: Project[] = [
       'Destination research and recommendations',
       'Collaborative trip planning',
     ],
-    tech: ['TypeScript', 'React', 'AI/LLM Integration'],
+    tech: ['TypeScript', 'React', 'Custom Agents'],
     links: [],
   },
 ]

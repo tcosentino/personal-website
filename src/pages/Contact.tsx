@@ -10,7 +10,7 @@ export default function Contact() {
       <div className="max-w-4xl mx-auto px-8 py-12 flex-1 w-full">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Get in Touch</h1>
         <p className="text-gray-500 mb-10">
-          Interested in agentic systems, distributed architecture, or just want to chat?
+          Interested in product development, agentic systems, or just want to chat?
         </p>
 
         <div className="grid md:grid-cols-2 gap-6">
@@ -66,18 +66,23 @@ export default function Contact() {
 
             <div className="space-y-4">
               <div>
+                <h3 className="text-sm font-semibold text-gray-700 mb-1">Product Development</h3>
+                <p className="text-sm text-gray-500">Building and scaling full-stack products from zero to production, end-to-end ownership from design through infrastructure.</p>
+              </div>
+
+              <div>
                 <h3 className="text-sm font-semibold text-gray-700 mb-1">Agentic Systems</h3>
                 <p className="text-sm text-gray-500">Building autonomous AI agents, multi-agent workflows, tool-using LLMs, agent orchestration platforms.</p>
               </div>
 
               <div>
                 <h3 className="text-sm font-semibold text-gray-700 mb-1">Platform Engineering</h3>
-                <p className="text-sm text-gray-500">Distributed systems at scale, API orchestration, Kubernetes, infrastructure tooling.</p>
+                <p className="text-sm text-gray-500">Distributed systems at scale, Kubernetes, cloud infrastructure, observability.</p>
               </div>
 
               <div className="pt-4 border-t border-gray-100">
                 <p className="text-sm text-gray-400">
-                  Always interested in conversations about distributed systems and agentic AI.
+                  Always interested in conversations about building products, distributed systems, and agentic AI.
                 </p>
               </div>
             </div>
