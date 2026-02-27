@@ -3,8 +3,6 @@ import Home from './pages/Home'
 import Projects from './pages/Projects'
 import ProjectDetail from './pages/ProjectDetail'
 import Resume from './pages/Resume'
-import Blog from './pages/Blog'
-import BlogPost from './pages/BlogPost'
 import Contact from './pages/Contact'
 import Example1 from './pages/Example1'
 import Example2 from './pages/Example2'
@@ -18,8 +16,6 @@ function App() {
       <Route path="/projects" element={<Projects />} />
       <Route path="/projects/:slug" element={<ProjectDetail />} />
       <Route path="/resume" element={<Resume />} />
-      <Route path="/blog" element={<Blog />} />
-      <Route path="/blog/:slug" element={<BlogPost />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/example1" element={<Example1 />} />
       <Route path="/example2" element={<Example2 />} />

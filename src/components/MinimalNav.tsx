@@ -8,7 +8,6 @@ export default function MinimalNav() {
         <div className="flex gap-6">
           <Link to="/projects" className="hover:text-blue-600 transition-colors">projects</Link>
           <Link to="/resume" className="hover:text-blue-600 transition-colors">resume</Link>
-          <Link to="/blog" className="hover:text-blue-600 transition-colors">blog</Link>
           <Link to="/contact" className="hover:text-blue-600 transition-colors">contact</Link>
         </div>
       </div>
