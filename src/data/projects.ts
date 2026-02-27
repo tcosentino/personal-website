@@ -16,7 +16,7 @@ export interface Project {
   screenshots?: {
     title: string
     description: string
-    placeholder: string // Color/gradient for placeholder
+    image: string // Path to screenshot image in /public
   }[]
   features?: {
     title: string
@@ -121,17 +121,17 @@ export const projects: Project[] = [
       {
         title: 'Task Management Board',
         description: 'Kanban view showing agent tasks across the development lifecycle: Backlog → In Progress → Review → Done',
-        placeholder: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        image: '/agentforge-kanban.png',
       },
       {
         title: 'Deployment Dashboard',
         description: 'One-click deployment to AWS with real-time logs, infrastructure status, and CloudFront invalidation tracking',
-        placeholder: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+        image: '/agentforge-deploy.png',
       },
       {
         title: 'OpenSpec Workflow',
         description: 'Spec editor with validation, agent task generation, and real-time sync across all agents',
-        placeholder: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+        image: '/agentforge-spec.png',
       },
     ],
     techDetails: [
@@ -190,6 +190,15 @@ export const projects: Project[] = [
       'Collaborative trip planning',
     ],
     tech: ['TypeScript', 'React', 'Custom Agents'],
-    links: [],
+    links: [
+      { label: 'Visit Site', url: 'https://trips.sample.troycosentino.com' },
+    ],
+    screenshots: [
+      {
+        title: 'Trip Planning Interface',
+        description: 'AI-powered itinerary builder with day-by-day trip organization and destination recommendations',
+        image: '/roteiro-screenshot.png',
+      },
+    ],
   },
 ]

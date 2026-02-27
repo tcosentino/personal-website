@@ -106,13 +106,12 @@ export default function ProjectDetail() {
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Screenshots</h2>
             <div className="space-y-8">
               {project.screenshots.map((screenshot, i) => (
-                <div key={i} className="bg-white/60 rounded-xl border border-gray-100 overflow-hidden">
-                  <div 
-                    className="w-full h-64 sm:h-80 flex items-center justify-center text-white/90 text-lg font-medium"
-                    style={{ background: screenshot.placeholder }}
-                  >
-                    {screenshot.title}
-                  </div>
+                <div key={i} className="bg-white/60 rounded-xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                  <img 
+                    src={screenshot.image}
+                    alt={screenshot.title}
+                    className="w-full h-auto object-cover"
+                  />
                   <div className="p-6">
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">{screenshot.title}</h3>
                     <p className="text-gray-600 text-sm">{screenshot.description}</p>
