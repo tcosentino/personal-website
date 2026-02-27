@@ -85,38 +85,6 @@ export const projects: Project[] = [
         content: 'AgentForge is built as a monorepo with three main components:\n\n**Frontend (React + Vite)**: Kanban board UI for task management, spec editor, deployment dashboard, and agent activity logs.\n\n**Backend (Node.js)**: Agent orchestration engine, task queue management, spec validation, and deployment automation.\n\n**Agent Framework**: Reusable agent primitives with role-based prompting, memory management, and tool integration (file system, git, AWS CLI, testing frameworks).\n\nAgents communicate through a structured task queue. Each task includes context (relevant spec sections, prior decisions, dependencies) to ensure agents have the information they need. State is persisted to SQLite for simplicity during development, with plans to migrate to PostgreSQL for production.',
       },
     ],
-    features: [
-      {
-        title: 'Spec-Driven Development',
-        description: 'OpenSpec format keeps all agents aligned on what to build and what NOT to build. The spec is the source of truth that prevents scope creep.',
-        icon: '📋',
-      },
-      {
-        title: 'Agent Orchestration',
-        description: 'Specialized agents (Architect, Developer, Tester, DevOps) collaborate with defined handoffs and responsibilities.',
-        icon: '🤖',
-      },
-      {
-        title: 'Human-in-the-Loop',
-        description: 'Review and approve agent decisions at key checkpoints. Agents propose, humans decide. You stay in control.',
-        icon: '✋',
-      },
-      {
-        title: 'Task Kanban Board',
-        description: 'Visual board shows what agents are working on, what\'s queued, and what\'s completed. Track project progress at a glance.',
-        icon: '📊',
-      },
-      {
-        title: 'One-Command Deploy',
-        description: 'DevOps agent handles AWS infrastructure-as-code, deployment pipelines, and production monitoring. Ship with confidence.',
-        icon: '🚀',
-      },
-      {
-        title: 'Built-in Guardrails',
-        description: 'Agents won\'t implement features that aren\'t in the spec. No more hallucinated functionality or surprise technical debt.',
-        icon: '🛡️',
-      },
-    ],
     screenshots: [
       {
         title: 'Task Management Board',

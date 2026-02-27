@@ -66,7 +66,7 @@ export default function ProjectDetail() {
         {/* Highlights */}
         {project.highlights.length > 0 && (
           <div className="mb-16">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Key Highlights</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Key Features</h2>
             <div className="grid sm:grid-cols-2 gap-4">
               {project.highlights.map((h, i) => (
                 <div key={i} className="flex items-start gap-3 p-4 bg-white/50 rounded-lg border border-gray-100">
@@ -76,24 +76,6 @@ export default function ProjectDetail() {
                     </svg>
                   </span>
                   <span className="text-gray-700 leading-relaxed">{h}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Features */}
-        {project.features && project.features.length > 0 && (
-          <div className="mb-16">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Key Features</h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {project.features.map((feature, i) => (
-                <div key={i} className="p-6 bg-white/60 rounded-xl border border-gray-100 hover:shadow-md transition-shadow">
-                  {feature.icon && (
-                    <div className="text-4xl mb-4">{feature.icon}</div>
-                  )}
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
-                  <p className="text-gray-600 leading-relaxed text-sm">{feature.description}</p>
                 </div>
               ))}
             </div>
